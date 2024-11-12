@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# module to store linked lists implementation for odin
 module OdinLinkedList
   # nodes with vals
   class Node
