@@ -42,7 +42,63 @@ module OdinLinkedList
       curr = @head
       curr = curr.next until curr.next.next.nil?
       curr.next = nil
+      @tail = curr
       @size -= 1
+    end
+
+    def shift
+      @head = @head.next
+      @head.val = nil
+    end
+
+    def contains?(val)
+      curr = @head
+      until curr.next.nil?
+        return true if curr.val == val
+
+        curr = curr.next
+      end
+      return true if curr.val == val
+
+      false
+    end
+
+    def find(val)
+      curr = @head
+      i = -1
+      until curr.next.nil?
+        return i if curr.val == val
+
+        curr = curr.next
+        i += 1
+      end
+      return i if curr.val == val
+
+      nil
+    end
+
+    def insert_at(val, index)
+      if index.zero?
+        prepend(val)
+      elsif index == (size + 1)
+        append(val)
+      elsif index.between?(0, size + 1)
+        insert_at_helper(val, index)
+      else
+        puts "error enter valid index"
+      end
+    end
+
+    def delete_at(index)
+      if index.zero?
+        shift
+      elsif index == (size)
+        pop
+      elsif index.between?(0, size)
+        delete_at_helper(index)
+      else
+        puts "error enter valid index"
+      end
     end
 
     def display
@@ -58,6 +114,24 @@ module OdinLinkedList
       end
       arr << "(#{curr.val}) -> nil"
       arr.join
+    end
+
+    private
+
+    def insert_at_helper(val, index)
+      curr = @head
+      index.times do
+        curr = curr.next
+      end
+      curr.next = OdinLinkedList::Node.new(val, curr.next)
+    end
+
+    def delete_at_helper(index)
+      curr = @head
+      index.times do
+        curr = curr.next
+      end
+      curr.next = curr.next.next
     end
   end
 end

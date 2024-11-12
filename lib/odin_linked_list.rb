@@ -27,6 +27,47 @@ list.display
 puts ""
 puts "Size: #{list.size}"
 puts ""
+puts "append 2"
+list.append("There")
+list.append("Person")
+list.display
+puts ""
+puts "contains Hi? #{list.contains?('Hi')}"
+puts "contains Bye? #{list.contains?('Bye')}"
+puts "find Hi: #{list.find('Hi')}"
+puts "find Bye: #{list.find('Bye')}"
+puts "find Person: #{list.find('Person')}"
+puts ""
+puts "Insert My at 3"
+list.display
+list.insert_at("My", 3)
+list.display
+puts ""
+puts "Insert Start at 0"
+list.display
+list.insert_at("Start", 0)
+list.display
+puts ""
+puts "Insert End at 6"
+list.display
+list.insert_at("End", 6)
+list.display
+puts ""
+puts "delete at 0"
+list.display
+list.delete_at(0)
+list.display
+puts ""
+puts "delete at 5"
+list.display
+list.delete_at(5)
+list.display
+puts ""
+puts "delete at 3"
+list.display
+list.delete_at(3)
+list.display
+puts ""
 
 puts "Prepend first"
 list2 = OdinLinkedList::LinkedList.new
